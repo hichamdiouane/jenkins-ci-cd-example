@@ -34,5 +34,10 @@ pipeline {
                 }
             }
         }
+        stage('Deploy image') {
+            steps{
+                sh "docker run -d -p 8099:80 ${registry}:${BUILD_NUMBER}"
+            }
+        }
     }
 }
